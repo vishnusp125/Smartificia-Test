@@ -9,23 +9,11 @@ function Page() {
 
     async function getResult() {
         const result = await axios.get("http://localhost:5000/passages/passageGet")
-        console.log(result.data);
         setDetails(result?.data);
     }
     useEffect(() => {
         getResult()
     }, [])
-    const { id } = useParams();
-    const navigate = useNavigate()
-    // if (details) {
-    //     const doc_id = details
-    //     console.log("hello", doc_id);
-    // }
-
-    function view(id) {
-        console.log(id);
-    }
-
     const columns = [
         {
             name: "No",
@@ -61,32 +49,24 @@ function Page() {
             selector: (row) => {
                 return (
                     <div>
-                        <button key={row.doc_id} 
-                            onClick={() => view(row._id)}
-                        >
+                        <button key={row._id}>
                             <Link to={`/pages/${row.doc_id}/en`}>
                                 English
                             </Link>
                         </button>
-                        <button key={row.doc_id} 
-                            onClick={() => view(row._id)}
-                        >
+                        <button key={row.doc_id}>
                             <Link to={`/pages/${row.doc_id}/es`}>
                                 Spanish
                             </Link>
                         </button>
-                        <button key={row.doc_id} 
-                            onClick={() => view(row._id)}
-                        >
+                        <button key={row.doc_id}>
                             <Link to={`/pages/${row.doc_id}/fr`}>
                                 French
                             </Link>
                         </button>
-                        <button key={row.doc_id}
-                            onClick={() => view(row._id)}
-                        >
+                        <button key={row.doc_id}>
                             <Link to={`/pages/${row.doc_id}/de`}>
-                               German
+                                German
                             </Link>
                         </button>
                     </div>

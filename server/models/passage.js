@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const passageSchema = mongoose.Schema(
     {
         doc_id: {
-            type: Object
+            type: Number
         },
         passage: {
             type: String,
